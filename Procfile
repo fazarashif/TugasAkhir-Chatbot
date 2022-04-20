@@ -1,0 +1,1 @@
+web: gunicorn AppChatbot:app --log-file-
