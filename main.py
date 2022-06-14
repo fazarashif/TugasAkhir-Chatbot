@@ -1,33 +1,23 @@
 import json
 import pandas as pd
-import numpy as np
 import pickle
-import random
 import re
 import nltk
 import numpy
 import string
 import keras
 from nltk.corpus import stopwords
-from nltk.stem import LancasterStemmer
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from tensorflow.python.keras.layers import Dense
-from tensorflow.python.keras.layers import Activation
 from tensorflow.python.keras.layers import Dropout
 from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.models import model_from_yaml
 
-#from keras.optimizers import Adam
+from matplotlib import pyplot as plt
+from keras.utils.vis_utils import plot_model
 
-from mysql.connector import connect
-
-
-import random
 
 nltk.download('punkt')
 nltk.download('stopwords')
-
-
 stemmer_sastrawi = StemmerFactory().create_stemmer()
 
 def text_preprocess(text):
@@ -55,17 +45,40 @@ def remove_stopwords(text):
     message = [word for word in text.split() if len(word)>1 and word not in list_stopwords]
     return " ".join(message)
 
-
-normalized_dict = pd.read_csv('normalisasi - colloquial-indonesian-lexicon2.csv').set_index('slang')['formal'].to_dict()
+#get colloquial-indonesian-lexicon.csv to a variable
+normalized_dict = pd.read_csv('normalisasi - colloquial-indonesian-lexicon.csv').set_index('slang')['formal'].to_dict()
 
 def normalized(text, norm_dict):
     tokenize = [word for word in text.split()]
     return " ".join([norm_dict[term] if term in norm_dict else term for term in tokenize])
 
 
-with open("dataset-baru6.json", encoding="utf8") as file:
+with open("dataset-train.json", encoding="utf8") as file:
     data = json.load(file)
 
+with open("Dataset-test.json", encoding="utf8") as file:
+    data_test = json.load(file)
+
+def bag_of_words(s, words):
+    bag = [0 for _ in range(len(words))]
+    s = text_preprocess(s)
+    s = remove_stopwords(s)
+    s = normalized(s, normalized_dict)
+
+    s_words = nltk.word_tokenize(s)
+    s_words = [stemmer_sastrawi.stem(word.lower()) for word in s_words]
+
+    for se in s_words:
+        for i, w in enumerate(words):
+            if w == se:
+                bag[i] = 1
+
+    return numpy.array(bag)
+
+
+
+
+#make training pickle
 try:
     with open("chatbot.pickle", "rb") as file:
         words, labels, training, output = pickle.load(file)
@@ -123,7 +136,37 @@ except:
     with open("chatbot.pickle", "wb") as file:
         pickle.dump((words, labels, training, output), file)
 
+#make testing pickle
+try:
+    with open("chatbot_test.pickle", "rb") as file:
+        words, labels, X_test, Y_test = pickle.load(file)
+    print("data_test is ready")
 
+except:
+
+    X_test = []
+    Y_test = []
+    Y_test_empty = [0 for _ in range(len(labels))]
+
+    for intent in data_test["intents"]:
+        for pattern in intent["patterns"]:
+            bow_data_test = bag_of_words(pattern, words)
+            X_test.append(bow_data_test)
+            label_test = intent["tag"]
+
+        for a, b in list(enumerate(labels)):
+            if label_test == b:
+                Y_test_row_test = Y_test_empty[:]
+                Y_test_row_test[a] = 1
+                Y_test.append(Y_test_row_test)
+
+    X_test = numpy.array(X_test)
+    Y_test = numpy.array(Y_test)
+
+    with open("chatbot_test.pickle", "wb") as file:
+        pickle.dump((words, labels, X_test, Y_test), file)
+
+#training proccess
 try:
     with open('chatbotmodel.json') as json_file:
         print(type(json_file))
@@ -133,20 +176,20 @@ try:
     print("Loaded model from disk")
 
 except:
-    # Make our neural network
+    # Make our BPNN model
     myChatModel = Sequential()
     myChatModel.add(Dense(128, input_shape=[len(words)], activation='relu'))
-    myChatModel.add(Dropout(0.5))
+    myChatModel.add(Dropout(0.50))
     myChatModel.add(Dense(64, activation='relu'))
-    myChatModel.add(Dropout(0.5))
+    myChatModel.add(Dropout(0.50))
     myChatModel.add(Dense(len(labels), activation='softmax'))
 
     # optimize the model
     #adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-    myChatModel.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    myChatModel.compile(loss='categorical_crossentropy', optimizer= 'adam', metrics=['accuracy'])
 
     # train the model
-    myChatModel.fit(training, output, epochs=1000, batch_size=8, verbose=1)
+    history = myChatModel.fit(training, output, epochs=600, batch_size=100, verbose=1, validation_data=(X_test, Y_test))
 
     # serialize model to yaml and save it to disk
     model_json = myChatModel.to_json()
@@ -157,212 +200,33 @@ except:
     myChatModel.save_weights("chatbotmodel.h5")
     print("Saved model from disk")
 
-def bag_of_words(s, words):
-    bag = [0 for _ in range(len(words))]
-    s = text_preprocess(s)
-    s = remove_stopwords(s)
-    s = normalized(s, normalized_dict)
 
-    s_words = nltk.word_tokenize(s)
-    s_words = [stemmer_sastrawi.stem(word.lower()) for word in s_words]
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
 
-    for se in s_words:
-        for i, w in enumerate(words):
-            if w == se:
-                bag[i] = 1
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train','test'], loc='upper left')
+plt.show()
 
-    return numpy.array(bag)
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
 
-
-# Adding some context to the conversation i.e. Contexualization for altering question and intents etc.
-# create a data structure to hold user context
-# context = {}
-#
-# ERROR_THRESHOLD = 0.30
-#
-#
-# def chatWithBot(inputText, userID='123'):
-#     # generate probabilities from the model
-#     currentText = bag_of_words(inputText, words)
-#     currentTextArray = [currentText]
-#     numpyCurrentText = numpy.array(currentTextArray)
-#
-#     if numpy.all((numpyCurrentText == 0)):
-#         return "maaf, chatbot masih belum mengerti. Tolong sampaikan gejala penyakit yang dialami anak."
-#
-#     results = myChatModel.predict(numpyCurrentText[0:1])
-#     # return 2dimensional array to 1 dimensional array
-#     results = results.flatten()
-#
-#     # filter out predictions below a threshold
-#     results = [[i, r] for i, r in enumerate(results) if r > ERROR_THRESHOLD]
-#     # sort by strength of probability
-#     results.sort(key=lambda x: x[1], reverse=True)
-#     return_list = []
-#     for r in results:
-#         return_list.append((labels[r[0]], r[1]))
-#     # return tuple of intent and probability
-#     results = return_list
-#
-#     # if we have a classification then find the matching intent tag
-#     if results:
-#         # loop as long as there are matches to process
-#         while results:
-#             for i in data['intents']:
-#                 # find a tag matching the first result
-#                 if i['tag'] == results[0][0]:
-#                     # set context for this intent if necessary
-#                     if (userID in context and 'context_filter' in i and 'context_set' in i and i['context_filter'] ==
-#                             context[userID]):
-#                         context[userID] = i['context_set']
-#
-#                         responses = i['responses']
-#                         return random.choice(responses)
-#
-#                     if 'context_set' in i:
-#                         context[userID] = i['context_set']
-#
-#                     # check if this intent is contextual and applies to this user's conversation
-#                     if not 'context_filter' in i or \
-#                             (userID in context and 'context_filter' in i and i['context_filter'] == context[userID]):
-#                         # a random response from the intent
-#
-#                         responses = i['responses']
-#                         return random.choice(responses)
-#
-#             results.pop(0)
-
-#ini coba chatwith bot
-# Adding some context to the conversation i.e. Contexualization for altering question and intents etc.
-# create a data structure to hold user context
-context = {}
-fallback_intent = "Mohon maaf ya, Chatbot belum bisa menjawab pertanyaan anda dan masih perlu banyak belajar nih! Mohon ceritakan pertanyaan atau gejala yang dialami anak ya!"
-ERROR_THRESHOLD = 0.10
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train','test'], loc='upper left')
+plt.show()
 
 
-def chatWithBot5(inputText, userID='123'):
-    # generate probabilities from the model
-    currentText = bag_of_words(inputText, words)
-    currentTextArray = [currentText]
-    numpyCurrentText = numpy.array(currentTextArray)
+score = myChatModel.evaluate(training, output, verbose=1)
 
-    results = myChatModel.predict(numpyCurrentText[0:1])
-    # return 2dimensional array to 1 dimensional array
-    results = results.flatten()
+print("Training Loss:", score[0])
+print("Training Accuracy:", score[1])
 
-    # filter out predictions below a threshold
-    results = [[i, r] for i, r in enumerate(results) if r > ERROR_THRESHOLD]
-    # sort by strength of probability
-    results.sort(key=lambda x: x[1], reverse=True)
-    return_list = []
-    for r in results:
-        return_list.append((labels[r[0]], r[1]))
 
-    results = return_list
-    # if we have a classification then find the matching intent tag
-    if results:
-        # loop as long as there are matches to process
-        while results:
-            for i in data['intents']:
-                # find a tag matching the first result
-                if i['tag'] == results[0][0]:
-                    # set context for this intent if necessary
-                    if (userID in context and 'context_filter' in i and 'context_set' in i and i['context_filter'] ==
-                            context[userID]):
-                        context[userID] = i['context_set']
+score = myChatModel.evaluate(X_test, Y_test, verbose=1)
 
-                        responses = i['responses']
-                        return random.choice(responses)
-
-                    if ('context_set' in i) and (not 'context_filter' in i):
-                        context[userID] = i['context_set']
-
-                    # check if this intent is contextual and applies to this user's conversation
-                    if not 'context_filter' in i or \
-                            (userID in context and 'context_filter' in i and i['context_filter'] == context[userID]):
-                        # a random response from the intent
-
-                        responses = i['responses']
-                        return random.choice(responses)
-
-            results.pop(0)
-        return fallback_intent
-
-    else:
-        return fallback_intent
-
-def chatbotResponse(inputText, chatUserID='123'):
-    db = connect(
-        host="127.0.0.1",
-        port="3306",
-        user="root",
-        passwd="",
-        database="intentchatbot")
-
-    cursor_db = db.cursor()
-
-    userID = chatUserID
-    response = chatWithBot5(inputText, chatUserID)
-
-    if response == fallback_intent:
-        fallback = '1'
-    else:
-        fallback = '0'
-
-    val = (userID, inputText, fallback)
-    query = "INSERT INTO intents (userID, intent, fallback_flag) VALUES (%s, %s, %s)"
-
-    cursor_db.execute(query, val)
-    db.commit()
-
-    if inputText.lower() == "keluar":
-        response = "apakah anda cukup terbantu setelah bercakap dengan chatbot ini ?"
-        context[userID] = "feedback"
-
-    cursor_db.close()
-
-    return response
-
-# def chat(chatUserID):
-#     print(
-#         "Selamat datang di chatbot, silahkan sampaikan gejala yang dialami oleh anak.. (ketik keluar jika ingin berhenti berbicara dengan chatbot)")
-#
-#     db = connect(
-#         host="127.0.0.1",
-#         port="3306",
-#         user="root",
-#         passwd="",
-#         database="intentchatbot")
-#
-#     cursor_db = db.cursor()
-#
-#     while True:
-#         inp = input("You: ")
-#         userID = chatUserID
-#         response = chatWithBot(inp, chatUserID)
-#
-#         if response == "maaf, chatbot masih belum mengerti. Tolong sampaikan gejala penyakit yang dialami anak.":
-#             fallback = '1'
-#         else:
-#             fallback = '0'
-#
-#         val = (userID, inp, fallback)
-#         query = "INSERT INTO intents (userID, intent, fallback_flag) VALUES (%s, %s, %s)"
-#
-#         cursor_db.execute(query, val)
-#         db.commit()
-#
-#         if inp.lower() == "keluar":
-#             print("apakah anda cukup terbantu setelah bercakap dengan chatbot ini ?")
-#             context[userID] = "feedback"
-#             inp2 = input("You: ")
-#             response2 = chatWithBot(inp2, chatUserID)
-#             print(response2)
-#
-#             break
-#
-#         print(response)
-#
-#     cursor_db.close()
-
-#   chat("test1")
+print("Test Loss:", score[0])
+print("Test Accuracy:", score[1])
