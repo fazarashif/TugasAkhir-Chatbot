@@ -9,7 +9,7 @@ import keras
 from nltk.corpus import stopwords
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from flask import Flask
-from mysql.connector import connect
+import psycopg2
 import random
 
 nltk.download('punkt')
@@ -18,15 +18,15 @@ nltk.download('stopwords')
 stemmer_sastrawi = StemmerFactory().create_stemmer()
 
 
-#Load Dataset
-with open("dataset-baru6.json", encoding="utf8") as file:
+# Load Dataset
+with open("dataset-train.json", encoding="utf8") as file:
     data = json.load(file)
 
-#Load chatbot pickle
+# Load chatbot pickle
 with open("chatbot.pickle", "rb") as file:
     words, labels, training, output = pickle.load(file)
 
-#Load Chatbot model
+# Load Chatbot model
 with open('chatbotmodel.json') as json_file:
     print(type(json_file))
     model_json = json.load(json_file)
@@ -34,7 +34,27 @@ myChatModel = keras.models.model_from_json(model_json)
 myChatModel.load_weights("chatbotmodel.h5")
 print("Loaded model from disk")
 
-#declare function
+# Connection with Database
+hostnameDB = 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com'
+databaseDB = 'dd14gbt0m6gn3v'
+usernameDB = 'jmvpnptxitlygr'
+pwdDB = 'e95ff83df0c1eb9fe0fe16bec7258204896854f2a93df894670969f9e182b210'
+portDB = '5432'
+connDB = None
+cursorDB = None
+
+# #Connection with Database
+# hostnameDB = 'localhost'
+# databaseDB = 'intentchatbot'
+# usernameDB = 'postgres'
+# pwdDB = '1234'
+# portDB = '5432'
+# connDB = None
+# cursorDB = None
+
+
+
+# declare function
 
 def text_preprocess(text):
     text = str(text) #convert to string
@@ -50,7 +70,7 @@ def text_preprocess(text):
     text = text.strip('\'"') #trim
     return text
 
-#Get stopwords for Bahasa Indonesia
+# Get stopwords for Bahasa Indonesia
 list_stopwords = stopwords.words('indonesian')
 list_needwords = ["tidak", "ada"]
 for i in list_needwords:
@@ -84,14 +104,19 @@ def bag_of_words(s, words):
 
     return numpy.array(bag)
 
-#function for generate response from the prediction
+# function for generate response from the prediction
 context = {}
-fallback_intent = "Mohon maaf ya, Chatbot belum bisa menjawab pertanyaan anda dan masih perlu banyak belajar nih! Mohon ceritakan pertanyaan atau gejala yang dialami anak ya!"
-ERROR_THRESHOLD = 0.10
-
+fallback_intent = "Mohon maaf ya, Chatbot belum bisa menjawab pertanyaan anda dan masih perlu banyak belajar nih! Mohon ceritakan pertanyaan atau gejala yang dialami anak ya! Atau bisa anda tambahkan kategori penyakit pada akhir pertanyaan anda, seperti \"makanan yang disarankan Untuk Anak Saya Yang DEMAM\""
+short_resp = ['iya', 'benar', 'betul', 'ada', 'yes', 'enggak', 'tidak', 'enggak ada', 'tdk', 'ndak ada', 'ndak']
 
 def chatWithBot(inputText, userID='123'):
-    # generate probabilities from the model
+    ERROR_THRESHOLD = None
+    if inputText in short_resp:
+        ERROR_THRESHOLD = 0.05
+    else:
+        ERROR_THRESHOLD = 0.7
+
+        # generate probabilities from the model
     currentText = bag_of_words(inputText, words)
     currentTextArray = [currentText]
     numpyCurrentText = numpy.array(currentTextArray)
@@ -117,19 +142,22 @@ def chatWithBot(inputText, userID='123'):
                 # find a tag matching the first result
                 if i['tag'] == results[0][0]:
                     # set context for this intent if necessary
-                    if (userID in context and 'context_filter' in i and 'context_set' in i and i['context_filter'] ==
-                            context[userID]):
+                    if (userID in context) and ('context_filter' in i) and ('context_set' in i) and (
+                            i['context_filter'] == context[userID]):
                         context[userID] = i['context_set']
 
                         responses = i['responses']
                         return random.choice(responses)
 
-                    if ('context_set' in i) and (not 'context_filter' in i):
+                    if (not userID in context) and ('context_set' in i) and (not 'context_filter' in i):
                         context[userID] = i['context_set']
 
+                        responses = i['responses']
+                        return random.choice(responses)
+
                     # check if this intent is contextual and applies to this user's conversation
-                    if not 'context_filter' in i or \
-                            (userID in context and 'context_filter' in i and i['context_filter'] == context[userID]):
+                    if (userID in context and 'context_filter' in i and i['context_filter'] == context[userID]) and (
+                    not 'context_set' in i):
                         # a random response from the intent
 
                         responses = i['responses']
@@ -141,16 +169,8 @@ def chatWithBot(inputText, userID='123'):
     else:
         return fallback_intent
 
+
 def chatbotResponse(inputText, chatUserID='123'):
-    db = connect(
-        host="127.0.0.1",
-        port="3306",
-        user="root",
-        passwd="",
-        database="intentchatbot")
-
-    cursor_db = db.cursor()
-
     userID = chatUserID
     response = chatWithBot(inputText, chatUserID)
 
@@ -162,27 +182,52 @@ def chatbotResponse(inputText, chatUserID='123'):
     val = (userID, inputText, fallback)
     query = "INSERT INTO intents (userID, intent, fallback_flag) VALUES (%s, %s, %s)"
 
-    cursor_db.execute(query, val)
-    db.commit()
+    try:
+        connDB = psycopg2.connect(
+            host=hostnameDB,
+            dbname=databaseDB,
+            user=usernameDB,
+            password=pwdDB,
+            port=portDB
+        )
+
+        cursorDB = connDB.cursor()
+
+        val = (userID, inputText, fallback)
+        query = "INSERT INTO intents (userID, intent, fallback_flag) VALUES (%s, %s, %s)"
+
+        cursorDB.execute(query, val)
+        connDB.commit()
+
+    except Exception as error:
+        print(error)
+
+    finally:
+        if cursorDB is not None:
+            cursorDB.close()
+        if connDB is not None:
+            connDB.close()
 
     if inputText.lower() == "keluar":
         response = "apakah anda cukup terbantu setelah bercakap dengan chatbot ini ?"
         context[userID] = "feedback"
 
-    cursor_db.close()
-
     return response
+
 
 
 #Routing Flask to App inventor
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'enter-a-very-secretive-key-3479373'
+# app.config['SECRET_KEY'] = 'enter-a-very-secretive-key-3479373'
 
 @app.route('/')
 def index():
-    return ("sistem chabot")
+    return "<h1>Selamat datang di Chatbot</h1>"
 
+@app.route('/context')
+def show_context():
+    return context
 
 @app.route('/chatbot/<username>/<question>')
 def chatbot_response(question, username):
@@ -191,6 +236,4 @@ def chatbot_response(question, username):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8888, debug=True)
-
-
+    app.run()
