@@ -1,0 +1,188 @@
+{"intents":
+[
+{
+      "tag":"DIA0",
+      "patterns":[
+         "Halo Dok, saya ingin bertanya. Saya mempunyai anak berumur 19 bulan, selama 5 hari ini ketika BAB fesesnya cair dan dalam sehari dia bisa BAB sampai 4 kali. Akan tetapi aktivitasnya tidak terganggu dan dia tidak terlihat lesu. Apa penyebabnya dan apa yang harus saya lakukan?"
+      ],
+      "responses":["Anak anda kemungkinan mengalami diare nih yang biasanya ditunjukkan dengan frekuensi BAB yang lebih sering dan kondisi feses\/tinja lebih cair. Apakah diare anak anda disertai gejala dehidrasi seperti lebih lemas serta malas menyusu atau kehausan daripada biasanya?"]
+   },
+{
+      "tag":"DEH0",
+      "patterns":[
+         "Dokter, kenapa yaa bibir by saya kyk mau lukaa, merah merah gt dokter, atas dan bawah. Terus ubun²nya cekung sdh 2 hari ini.?"],
+      "responses":["Ada kemungkinan anak anda mengalami Dehidrasi, yang bisa disebabkan oleh banyak kondisi, seperti diare, muntah-muntah, demam, bekerja di tempat panas, keringat keluar berlebihan, dan sebagainya. Jika anak dehidrasi anak anda tergolong parah, yang ditandai dengan bibir pecah, mata cekung, lemas, atau kulit perut yang lama kembali jika dicubit, Segera periksakan dan bawa anak anda ke dokter anak atau fasilitas kesehatan terdekat yaa! \nUntuk sementara ini, ada beberapa hal yang bisa anda lakukan. Untuk bayi menyusui, harap berikan ASI lebih banyak dan sering daripada biasanya. Jika bayi sudah boleh konsumsi selain ASI, berikan makanan yang mudah dicerna, dengan porsi yang lebih sedikit namun sering. Biarkan anak anda istirahat dan tidur yang cukup serta perhatikan selalu kebersihan lingkungan disekitar anak. Anda juga bisa memberikan larutan oralit untuk mencukupi kebutuhan cairan anak!\nAnda juga bisa menanyakan pertanyaan seputar dehidrasi anak lho kepada saya, seperti makanan yg disarankan maupun dilarang untuk anak, atau informasi lainnya!.... (contoh : Bagaimana saya harus menyiapkan makanan untuk anak saya yang sedang dehidrasi?) "]
+   },
+   {
+      "tag":"DEM0",
+      "patterns":[
+         "Hallo dok ,saya mau tanya .. kenapa ya dok anak saya kalau sakit selalu demam tinggi ? Dan meski udah minum obat demam ga cepat menurun. bagaimana ya ?"
+      ],
+      "responses":["Kondisi yang dialami anak anda kemungkinan adalah Demam. Demam sendiri adalah kondisi dimana ada peningkatan suhu tubuh mencapai lebih dari 37.5 derajat (termometer) dimana merupakan respon tubuh dalam melawan infeksi. Demam yang dialami anak bisa disebabkan oleh berbagai macam penyebab, seperti infeksi saluran pernafasan. Untuk mengerahuinya, mohon tenangkan anak anda dan hitung nafas anak anda dalam waktu satu menit. Napas terhitung cepat apabila :\n1. 2 bulan sampai < 12 bulan  : 50 kali atau lebih per menit\n2. 12 bulan sampai < 5 tahun  : 40 kali atau lebih per menit\nApakah anak anda mengalami napas cepat ? \n(Jawab Iya \/ Tidak)"]
+   },
+   {
+      "tag":"SES0",
+      "patterns":[
+         "Dok saya ingin bertanya td anak saya berusia 22 hari sedang tidur tiba tiba wajah nya membiru seperti kesulitan bernafas bahkan biru nya gelap saya panik saya gendong dan saya tepuk² punggung nya dok dia baru merespon seperti ingin menangis tapi tidak bisa saya tepuk terus hingga wajah anak saya yg dingin dan biru kembali normal dan menangis dengan lantang. Kira kira knp ya dok ?"
+      ],
+      "responses":["Ada kemungkinan gejala yang dialami anak adalah Sesak Nafas, yang mana anak mengalami kondisi kesulitan untuk bernafas sehingga pasokan oksigen ke paru-paru kurang. Sesak nafas yang dialami anak bisa disebabkan oleh berbagai macam penyebab, seperti pneumonia, asma, batuk pilek, alergi, atau bahkan tersedak makanan, dan lain sebagainya. Jika terdapat gejala sesak nafas parah seperti, pernafasan anak cepat, gelisah dan rewel, menangis terus menerus, demam tinggi, pucat, terdengar bunyi mengi pada nafas, ataupun kulit anak pucat atau membiru, Segera periksakan dan bawa anak anda ke dokter anak, UGD, atau fasilitas kesehatan terdekat yaa!..\nNamun jangan panik yaa! Anda dapat melakukan penanganan pertama anak yang sesak nafas, dengan membimbing anak untuk bernafas lewat mulut jika memungkinkan. Selain itu anda bisa memposisikan anak anda duduk dengan sedikit membungkuk serta melonggarkan pakaiannya untuk mempermudah nafasnya. Selain itu tetap jaga kebersihan lingkungan anak dan hindarkan dari paparan asap rokok yaa!\nAnda juga bisa menanyakan pertanyaan seputar sesak nafas anak lho kepada saya, seperti makanan yg disarankan maupun dilarang untuk anak,tindakan yang harus dilakukan, atau informasi lainnya!.. (contoh : untuk anak saya yang terkena sesak nafas, saya harus menyiapkan makanan apa saja?) "]
+   },
+   {
+      "tag":"DBD0",
+      "patterns":[
+         "Dok ini anak saya kemarin sempet demam tinggi dan muncul bercak merah merah. Bagaimana ya ini dok ?"
+      ],
+      "responses":["Bisa jadi ada kemungkinan anak anda terkena Demam Berdarah (DBD). DBD sendiri ditularkan melalui gigitan nyamuk Aedes Aegypti. Jika pada anak sudah terdapat gejala DBD seperti demam yang naik turun, muntah terus menerus, pendarahan pada gusi dan hidung, bintik merah pada tubuh, dan tanda bahaya lainnya, Segera periksakan dan bawa anak anda ke dokter anak, UGD, atau fasilitas kesehatan terdekat yaa! .\nJangan panik yaa, Untuk meredakan gejala DBD, ada beberapa hal yang bisa anda lakukan. Untuk mencegah dehidrasi, berikan cairan yang cukup kepada anak seperti makanan berkuah atau minum yang lebih banyak serta cairan elektrolit. Jika masih menyusui, berikan ASI yang cukup untuk anak. Biarkan anak anda istirahat dan tidur yang cukup supaya dapat membantu memulihkan tubuh yang sakit. Jika diperlukan anda bisa memberi paracetamol pada anak untuk meredakan demam. \nAnda juga bisa menanyakan pertanyaan seputar DBD anak lho kepada saya, seperti makanan yg disarankan maupun dilarang untuk anak,tindakan yang harus dilakukan, atau informasi lainnya!.. (contoh : Jika anak terkena DBD atau demam berdarah apa yang harus dilakukan?) "]
+   },
+   {
+      "tag":"FAQ-DIA3",
+      "patterns":[
+         "kalau anak saya diare seperti ini, makanan apa ya yang cocok buat anak saya?"
+      ],
+      "responses":["Jika bayi atau anak masih menyusu, ia bisa tetap diberikan air susu ibu (ASI) secara rutin atau setiap kali ia muntah dan mencret.\nUntuk anak yang sudah bisa mengonsumsi MPASI (di atas usia 6 bulan), ia bisa diberikan air putih, ASI, dan minuman yang mengandung elektrolit, misalnya air kelapa, untuk mencegah dehidrasi. Namun, Bunda tidak disarankan untuk memberi jus buah, karena justru dapat mengencerkan tinja Si Kecil.\nSelain itu, ada beberapa jenis makanan yang baik untuk dikonsumsi anak ketika diare, antara lain:\nNasi atau bubur \nRoti\nTelur matang\nSup\nKentang atau ubi yang direbus atau dipanggang\nSayuran yang dimasak, seperti wortel, jamur, atau buncis\nDaging sapi, ayam, atau ikan, yang dimasak hingga matang\nTak hanya beberapa makanan di atas, anak juga bisa diberi makanan atau minuman yang mengandung probiotik seperti yoghurt."]
+   },
+      {
+      "tag":"FAQ-DBD7",
+      "patterns":[
+         "kalau anak kena dbd seperti ini, adakah cara untuk merawat anak saya di rumah ?"
+      ],
+      "responses":["Kecukupan cairan penting untuk diperhatikan. Juga buang air kecil setiap 4-6 jam, dan cermati terjadinya warning sign. Walaupun dirawat di rumah cek darah berkala ke laboratorium tetap harus dilakukan."]
+   },
+   {
+      "tag":"FAQ-DEM11",
+      "patterns":[
+         "boleh nggak ya saya yang menggantikan anak saya minum obat? nantinya efek obatnya akan berpengaruh lewat ASI saya ya ?"
+      ],
+      "responses":["Makanan yang Ibu konsumsi akan memengaruhi ASI yang akan dikonsumsi si Kecil, ini memengaruhi rasa ASI, kualitas ASI dan komposisi di dalamnya. Hindari makanan berbumbu tajam atau pedas juga kafein karena bisa menjadi stimulan gangguan sistem pencernaan pada bayi seperti kembung, diare, alergi atau masalah lain. Namun ibu masih tetap diperbolehkan makan makanan yang pedas namun tidak berlebihan yaa..."]
+   },
+   {
+      "tag":"FAQ-SES4",
+      "patterns":[
+         "apakah saya harus membawa anak saya ke rumah sakit kalau sesak nafas kaya gini ?"
+      ],
+      "responses":["Seringkali sulit untuk mengetahui apakah anak-anak hanya mengalami flu yang parah atau apakah itu hal lain seperti pneumonia atau masalah lain. Jadi segera periksakan dan bawa anak anda ke dokter anak atau fasilitas kesehatan, apalagi anak memiliki tanda seperti nafas yang cepat, kuku atau bibir kebiruan, kulit pucat, dan demam tinggi."]
+   },
+   {
+      "tag":"DIA0",
+      "patterns":[
+         "Anak saya laki2 umur 15 bulan. badan panas dan BAB 4x sehari dengan fases lembek, Dan apakah tdak apa2 fases berubah jadi lembek karena biasanya padat"
+      ],
+      "responses":["Anak anda kemungkinan mengalami diare nih yang biasanya ditunjukkan dengan frekuensi BAB yang lebih sering dan kondisi feses\/tinja lebih cair. Apakah diare anak anda disertai gejala dehidrasi seperti lebih lemas serta malas menyusu atau kehausan daripada biasanya?"]
+   },
+   {
+      "tag":"FAQ-DIA7",
+      "patterns":[
+         "Boleh nggak saya saya kasih susu formula kalo diare gini ?"
+      ],
+      "responses":["Diare pada bayi berusia di bawah 6 bulan dapat diatasi dengan pemberian ASI lebih sering, terutama saat ia muntah dan mencret. Pada bayi berusia di atas 6 bulan, ASI boleh dilanjutkan sambil diselingi pemberian minuman rehidrasi, seperti oralit atau pedialit setiap kali ia BAB dan muntah. Agar anak mau makan, Anda dapat mengakalinya dengan memberikan makanan dalam porsi lebih kecil namun sering. Makanan yang baik untuk mengatasi diare pada anak adalah makanan yang teksturnya lembut, padat kalori, dan mudah dicerna. Anak yang sudah mulai MPASI atau makanan padat dapat diberikan bubur nasi tanpa santan, pisang tumbuk, wortel rebus yang lunak, atau daging ayam, ikan, atau sapi rebus yang disuwir-suwir."]
+   },
+   {
+      "tag":"FAQ-DIA1",
+      "patterns":[
+         "berapa gelas air yang harus diminum anak saya?"
+      ],
+      "responses":["Berdasarkan Angka Kecukupan Gizi (AKG) tahun 2013, kebutuhan cairan balita usai 2-5 tahun yaitu:\n1. Balita usia 1-3 tahun: 1200 ml\n2. Balita usia 4-6 tahun: 1500 ml\nAngka kebutuhan cairan anak balita di atas tidak harus dari air putih atau air mineral, tetapi bisa dari susu UHT atau formula yang dikonsumsi sehari-hari."]
+   },
+   {
+      "tag":"DEH0",
+      "patterns":[
+         "saya ingin bertanya , kenapa setiap buang air kecil urinnya bau menyengat dan anak saya badannya lemas?"],
+      "responses":["Ada kemungkinan anak anda mengalami Dehidrasi, yang bisa disebabkan oleh banyak kondisi, seperti diare, muntah-muntah, demam, bekerja di tempat panas, keringat keluar berlebihan, dan sebagainya. Jika anak dehidrasi anak anda tergolong parah, yang ditandai dengan bibir pecah, mata cekung, lemas, atau kulit perut yang lama kembali jika dicubit, Segera periksakan dan bawa anak anda ke dokter anak atau fasilitas kesehatan terdekat yaa! \nUntuk sementara ini, ada beberapa hal yang bisa anda lakukan. Untuk bayi menyusui, harap berikan ASI lebih banyak dan sering daripada biasanya. Jika bayi sudah boleh konsumsi selain ASI, berikan makanan yang mudah dicerna, dengan porsi yang lebih sedikit namun sering. Biarkan anak anda istirahat dan tidur yang cukup serta perhatikan selalu kebersihan lingkungan disekitar anak. Anda juga bisa memberikan larutan oralit untuk mencukupi kebutuhan cairan anak!\nAnda juga bisa menanyakan pertanyaan seputar dehidrasi anak lho kepada saya, seperti makanan yg disarankan maupun dilarang untuk anak, atau informasi lainnya!.... (contoh : Bagaimana saya harus menyiapkan makanan untuk anak saya yang sedang dehidrasi?) "]
+   },
+   {
+      "tag":"FAQ-DIA9",
+      "patterns":[
+         "Gimana ya caranya bujuk anak saya agar anak saya minumnya banyak?"
+      ],
+      "responses":["Diare pada bayi berusia di bawah 6 bulan dapat diatasi dengan pemberian ASI lebih sering, terutama saat ia muntah dan mencret. Pada bayi berusia di atas 6 bulan, ASI boleh dilanjutkan sambil diselingi pemberian minuman rehidrasi, seperti oralit atau pedialit setiap kali ia BAB dan muntah. Beberapa penelitian menunjukkan bahwa anak-anak mengonsumsi sekitar 45 hingga 50 persen lebih banyak cairan saat diberi rasa daripada saat mereka hanya diberi air putih. Ini berguna ketika mencoba mendorong anak untuk tetap terhidrasi. Bisa juga dengan memilih botol minum lucu dan berwarna agar anak semangat dalam minum cairan. Jangan lupa tawarkan makanan berkuah jika memang nafsu minum anak kurang. "]
+   },
+      {
+      "tag":"FAQ-DIA6",
+      "patterns":[
+         "kalau obat untuk anak dehidrasi biasanya apa ya?"
+      ],
+      "responses":["Pada dasarnya, anak-anak berusia di bawah 12 tahun yang mengalami diare tidak dianjurkan mengonsumsi obat-obatan tertentu, selama anak masih bisa makan dan minum dengan cukup dan tidak terlihat lemas atau dehidrasi.Beberapa jenis obat diare untuk anak yang umumnya akan diberikan oleh dokter seperti larutan elektrolit, Larutan rehidrasi oral, dan cairan elektrolit. Dokter umumnya baru akan meresepkan antibiotik jika hasil pemeriksaan menunjukkan anak mengalami diare akibat infeksi bakteri. Suplemen zinc juga bisa menjadi salah satu cara untuk menangani diare pada anak. Diare terkadang bisa membuat anak mengalami demam, sakit kepala, dan sakit perut. Untuk mengatasi keluhan tersebut, Anda bisa memberikan obat pereda demam dan antinyeri seperti paracetamol"]
+   },
+      {
+      "tag":"FAQ-DIA12",
+      "patterns":[
+         "apa jika anak dehidrasi harus dibawa ke dokter?"
+      ],
+      "responses":["Cari pertolongan medis segera jika anak Anda mengalami satu atau lebih hal berikut: kejang, muntah berwarna hijau atau kuning, kebingungan, perilaku tidak responsif, sangat lelah dan sulit dibangunkan, menolak cairan, muntah setelah mengonsumsi cairan, tidak dapat menyimpan makanan atau minum, bibir dan mulut kering, buang air kecil terbatas, atau kaki dan tangan dingin dan pucat."]
+   },
+   {
+      "tag":"DEM0",
+      "patterns":[
+         "Halo dok, saya mau tanya, anak saya berusia 1 tahun, sudah 3 hari ini demam batuk pilek, pada malam hari suhu badannya naik tapi pada pagi hari suhu nya normal. Tindakan apa yang harus saya lakukan?"
+      ],
+      "responses":["Kondisi yang dialami anak anda kemungkinan adalah Demam. Demam sendiri adalah kondisi dimana ada peningkatan suhu tubuh mencapai lebih dari 37.5 derajat (termometer) dimana merupakan respon tubuh dalam melawan infeksi. Demam yang dialami anak bisa disebabkan oleh berbagai macam penyebab, seperti infeksi saluran pernafasan. Untuk mengerahuinya, mohon tenangkan anak anda dan hitung nafas anak anda dalam waktu satu menit. Napas terhitung cepat apabila :\n1. 2 bulan sampai < 12 bulan  : 50 kali atau lebih per menit\n2. 12 bulan sampai < 5 tahun  : 40 kali atau lebih per menit\nApakah anak anda mengalami napas cepat ? \n(Jawab Iya \/ Tidak)"]
+   },
+   {
+      "tag":"FAQ-DEM5",
+      "patterns":[
+         "Kalau badannya panas gini apa boleh anak saya mandikan ya ?"
+      ],
+      "responses":["Sebenarnya mandi ketika demam bukanlah hal yang dilarang. Namun lebih baik jika memandikan anak yang sedang demam menggunakan air hangat. mandi air hangat justru amat dianjurkan untuk mereka yang demam. Setelah mandi, segera keringkan tubuh anak dengan handuk dan cepatlah berganti pakaian agar tidak kedinginan. Selain membuat tubuh segar dan nyaman, mandi juga sangat baik untuk menghilangkan kuman dan bakteri di kulit. Untuk bayi pun boleh-boleh saja. Jika agak khawatir, lepaskan seluruh pakaiannya, kemudian lap sekujur tubuhnya dengan menggunakan handuk yang telah dibasahi air hangat, lalu segera keringkan."]
+   },
+   {
+      "tag":"FAQ-DEM1",
+      "patterns":[
+         "apa boleh pada dahinya saya berikan kompres ya supaya panasnya turun?"
+      ],
+      "responses":["Metode kompres dianggap sebagai upaya penurun suhu badan. Cara kompres seperti ini memang benar bila dilakukan dengan air hangat. air hangat membantu pembuluh darah tepi di kulit melebar hingga pori-pori jadi terbuka yang selanjutnya memudahkan pengeluaran panas dari dalam tubuh. Selain itu, kompres juga bertujuan menurunkan suhu di permukaan tubuh. Turunnya suhu diharapkan terjadi lewat panas tubuh yang digunakan untuk menguapkan air pada kain kompres. Konkretnya, kain kompres dapat diletakkan tak hanya di dahi\/kening, tapi juga perut atau di bagian tubuh yang luas dan terbuka. Bisa juga diletakkan di wilayah yang terdapat pembuluh-pembuluh darah besar, semisal leher, ketiak, selangkangan maupun lipatan paha. Yang perlu diperhatikan, hindari mengompres dengan air dingin, air es, es batu, ataupun menggunakan alkohol."]
+   },
+   {
+      "tag":"FAQ-DEM6",
+      "patterns":[
+         "makanan apa ya yang disarankan untuk diberikan kepada anak yang demam?"
+      ],
+      "responses":["jika anak anda demam, anda bisa menyiapkan menu makanan yang dianjurkan sebagai berikut:\n1. ASI: tidak hanya membantu mencegah dehidrasi, tetapi juga memberi bayi semua nutrisi penting, termasuk antibodi\n2. Sup dengan kuah\n3. Buah-buahan yang kaya vitamin C, seperti jeruk, apel, dan pisang yang dihaluskan.\n4. Bubur yang rendah kalori, bergizi, dan mudah dicerna.\n5. Cairan: air mineral, jus buah (tanpa tambahan gula), dan air kelapa, akan membantu bayi tetap terhidrasi dengan baik.\n6. Minuman jahe"]
+   },
+   {
+      "tag":"SES0",
+      "patterns":[
+         "Beberapa hari ini anak saya makan dan minum yang manis dan es krim dan berwarna. Kemudian pilek, sehari kemudian batuk, dan malamnya seperti Pneumonia (Sesak Nafas)"
+      ],
+      "responses":["Ada kemungkinan gejala yang dialami anak adalah Sesak Nafas, yang mana anak mengalami kondisi kesulitan untuk bernafas sehingga pasokan oksigen ke paru-paru kurang. Sesak nafas yang dialami anak bisa disebabkan oleh berbagai macam penyebab, seperti pneumonia, asma, batuk pilek, alergi, atau bahkan tersedak makanan, dan lain sebagainya. Jika terdapat gejala sesak nafas parah seperti, pernafasan anak cepat, gelisah dan rewel, menangis terus menerus, demam tinggi, pucat, terdengar bunyi mengi pada nafas, ataupun kulit anak pucat atau membiru, Segera periksakan dan bawa anak anda ke dokter anak, UGD, atau fasilitas kesehatan terdekat yaa!..\nNamun jangan panik yaa! Anda dapat melakukan penanganan pertama anak yang sesak nafas, dengan membimbing anak untuk bernafas lewat mulut jika memungkinkan. Selain itu anda bisa memposisikan anak anda duduk dengan sedikit membungkuk serta melonggarkan pakaiannya untuk mempermudah nafasnya. Selain itu tetap jaga kebersihan lingkungan anak dan hindarkan dari paparan asap rokok yaa!\nAnda juga bisa menanyakan pertanyaan seputar sesak nafas anak lho kepada saya, seperti makanan yg disarankan maupun dilarang untuk anak,tindakan yang harus dilakukan, atau informasi lainnya!.. (contoh : untuk anak saya yang terkena sesak nafas, saya harus menyiapkan makanan apa saja?) "]
+   },
+   {
+      "tag":"FAQ-SES10",
+      "patterns":[
+
+		 "boleh nggak ya ini anak saya makan jajan chiki, minuman dingin, dan es krim walaupun sesak?"
+      ],
+      "responses":["Makanan kemasan seperti chiki juga termasuk dalam salah satu jenis makanan yang sebaiknya dihindari untuk Si Kecil. Terlebih saat mereka sudah terkena batuk dan pilek ataupun sesak napas. makanan dalam kemasan ini pula dapat menyebabkan alergi yang buruk untuk sistem pernafasan, yang hanya akan memperburuk batuk kering Si Kecil. Lalu diharapkan juga untuk menghindari makanan yang terlalu manis seperti jajan atau permen dan juga gorengan atau keripik yang dapat memperparah risiko batuk. Selain itu, makan es krim atau minum es juga sebaiknya dihindari yaa. Sebenarnya es bukanlah penyebab utama batuk, namun air dingin tersebut dapat menyebabkan rangsangan alergi serta iritasi. Alergi dan iritasi tersebutlah yang kemudian menimbulkan batuk dan gangguan pernafasan pada anak."]
+   },
+   {
+      "tag":"FAQ-SES8",
+      "patterns":[
+
+		 "kalau sesak begini tindakan apa yang bisa saya lakukan?"
+      ],
+      "responses":["Bila anak anda sudah cukup besar, anda bisa memintanya untuk bernapas melalui mulut agar dapat membantunya untuk bernafas lebih dalam dan efektif. Longgarkan pakaian anak anda dengan cara melepaskan kancing bajunya, terutama pada bagian leher dan dada. Bila perlu, ganti dengan pakaian yang lebih longgar. Selain itu, penting untuk menjauhkan anak dari asap rokok agar sesaknya tidak bertambah parah. Selain cara-cara di atas, anda juga bisa mengoleskan balsam ke dada, punggung, dan leher Si Kecil untuk melegakan pernapasannya dan membuatnya lebih nyaman. Untuk bayi dan anak-anak, sebaiknya pilih balsam dengan bahan alami."]
+   },
+   {
+      "tag":"DBD0",
+      "patterns":[
+         "Dok ini anak saya kemarin sempet demam tinggi dan muncul bercak merah merah. Bagaimana ya ini dok ?"
+      ],
+      "responses":["Bisa jadi ada kemungkinan anak anda terkena Demam Berdarah (DBD). DBD sendiri ditularkan melalui gigitan nyamuk Aedes Aegypti. Jika pada anak sudah terdapat gejala DBD seperti demam yang naik turun, muntah terus menerus, pendarahan pada gusi dan hidung, bintik merah pada tubuh, dan tanda bahaya lainnya, Segera periksakan dan bawa anak anda ke dokter anak, UGD, atau fasilitas kesehatan terdekat yaa! .\nJangan panik yaa, Untuk meredakan gejala DBD, ada beberapa hal yang bisa anda lakukan. Untuk mencegah dehidrasi, berikan cairan yang cukup kepada anak seperti makanan berkuah atau minum yang lebih banyak serta cairan elektrolit. Jika masih menyusui, berikan ASI yang cukup untuk anak. Biarkan anak anda istirahat dan tidur yang cukup supaya dapat membantu memulihkan tubuh yang sakit. Jika diperlukan anda bisa memberi paracetamol pada anak untuk meredakan demam. \nAnda juga bisa menanyakan pertanyaan seputar DBD anak lho kepada saya, seperti makanan yg disarankan maupun dilarang untuk anak,tindakan yang harus dilakukan, atau informasi lainnya!.. (contoh : Jika anak terkena DBD atau demam berdarah apa yang harus dilakukan?) "]
+   },
+   {
+      "tag":"FAQ-DBD8",
+      "patterns":[
+         "hal apa yang harus dilakukan supaya dbd dapat dicegah ya dok, langkah pencegahannya bagaimana ?"
+      ],
+      "responses":["Jika di lingkungan rumah terdapat banyak kasus DBD, lakukan 3M (menguras bak mandi, menutup genangan air dan mengubur sampah), makan makanan sehat, serta memakai lotion anti nyamuk saja tidak cukup. Mintalah dinas kesehatan setempat untuk melakukan fogging."]
+   },
+   {
+      "tag":"FAQ-DBD9",
+      "patterns":[
+         "Apa ada vaksin buat dbd?"
+      ],
+      "responses":["Sementara ini vaksin DBD yang memberikan hasil terbaik pada anak usia 9-16 tahun dalam kondisi sehat, Vaksin diberikan 3 kali dengan jarak pemberian 6 bulan yang dilakukan di klinik atau rumah sakit terdekat. Harga vaksin masih cukup mahal, sekitar satu juta rupiah per satu kali pemberian vaksin."]
+   }
+
+
+]
+}
