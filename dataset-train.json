@@ -42,7 +42,7 @@
       "responses":["Anak anda mengalami tanda bahaya umum yang memerlukan penanganan SEGERA. Segere rujuk dan bawa anak anda ke dokter atau fasilitas kesehatan terdekat untuk mendapatkan penanganan lebih lanjut dan rujukan tidak tertunda. Semoga anak anda dapat sembuh secepatnya.."],
 	  "context_filter": "tanda bahaya",
 	  "context_set": "klasifikasi"
-
+	  
    },
    {
       "tag":"tanda bahaya-tidak",
@@ -455,10 +455,8 @@
    {
       "tag":"FAQ-DIA10",
       "patterns":[
-         "apakah makanan yang saya makan dapat mempengaruhi diare yang dialami anak saya ?",
          "apa ada pengaruh antara makanan yang saya konsumsi dengan ASI yang saya berikan pada anak saya ?",
          "Adakah pengaruh makanan ibu pada kandungan nutrisi ASI ?",
-         "benarkah diare  disebabkan karena makanan yang saya makan ?",
          "apakah diare bayi saya dapat diperparah dengan makanan yang saya makan melalui ASI ?"
       ],
       "responses":["Makanan yang Ibu konsumsi akan memengaruhi ASI yang akan dikonsumsi si Kecil, ini memengaruhi rasa ASI, kualitas ASI dan komposisi di dalamnya. Hindari makanan berbumbu tajam atau pedas juga kafein karena bisa menjadi stimulan gangguan sistem pencernaan pada bayi seperti kembung, diare, alergi atau masalah lain. Namun ibu masih tetap diperbolehkan makan makanan yang pedas namun tidak berlebihan yaa.."],
@@ -484,7 +482,7 @@
       "responses":["Cari pertolongan medis segera jika anak Anda mengalami satu atau lebih hal berikut: kejang, muntah berwarna hijau atau kuning, kebingungan, perilaku tidak responsif, sangat lelah dan sulit dibangunkan, menolak cairan, muntah setelah mengonsumsi cairan, tidak dapat menyimpan makanan atau minum, bibir dan mulut kering, buang air kecil terbatas, atau kaki dan tangan dingin dan pucat."],
 	  "context_filter": "FAQ-diare"
    },
-
+   
    {
       "tag":"FAQ-DBD1",
       "patterns":[
@@ -707,10 +705,10 @@
    {
       "tag":"FAQ-DEM11",
       "patterns":[
-         "apakah makanan yang saya makan dapat mempengaruhi penyakit anak saya ?",
+         "apakah makanan yang saya makan dapat mempengaruhi penyakit anak saya melalui menyusui?",
          "apa ada pengaruh antara makanan yang saya konsumsi dengan ASI yang saya berikan pada anak saya ?",
          "Adakah pengaruh makanan ibu pada kandungan nutrisi ASI ?",
-         "benarkah demam anak saya disebabkan karena makanan yang saya makan ?"
+         "benarkah demam anak saya disebabkan karena makanan yang saya makan dan mempengaruhi ASI saya ?"
       ],
       "responses":["Makanan yang Ibu konsumsi akan memengaruhi ASI yang akan dikonsumsi si Kecil, ini memengaruhi rasa ASI, kualitas ASI dan komposisi di dalamnya. Hindari makanan berbumbu tajam atau pedas juga kafein karena bisa menjadi stimulan gangguan sistem pencernaan pada bayi seperti kembung, diare, alergi atau masalah lain. Namun ibu masih tetap diperbolehkan makan makanan yang pedas namun tidak berlebihan yaa..."],
 	  "context_filter": "FAQ-demam"
