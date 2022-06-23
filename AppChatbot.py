@@ -110,6 +110,8 @@ fallback_intent = "Mohon maaf ya, Chatbot belum bisa menjawab pertanyaan anda da
 short_resp = ['iya', 'benar', 'betul', 'ada', 'yes', 'enggak', 'tidak', 'enggak ada', 'tdk', 'ndak ada', 'ndak']
 
 def chatWithBot(inputText, userID='123'):
+    inputText = inputText.lower()
+
     ERROR_THRESHOLD = None
     if inputText in short_resp:
         ERROR_THRESHOLD = 0.05
@@ -237,3 +239,4 @@ def chatbot_response(question, username):
 
 if __name__ == '__main__':
     app.run()
+
