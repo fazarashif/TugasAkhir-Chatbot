@@ -35,10 +35,10 @@ myChatModel.load_weights("chatbotmodel.h5")
 print("Loaded model from disk")
 
 # Connection with Database
-hostnameDB = 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com'
-databaseDB = 'dd14gbt0m6gn3v'
-usernameDB = 'jmvpnptxitlygr'
-pwdDB = 'e95ff83df0c1eb9fe0fe16bec7258204896854f2a93df894670969f9e182b210'
+hostnameDB = '20.89.105.95'
+databaseDB = 'postgres'
+usernameDB = 'admin'
+pwdDB = 'password'
 portDB = '5432'
 connDB = None
 cursorDB = None
